@@ -1,5 +1,6 @@
 import React from 'react'
+import { InvoicesList } from '@/features/invoiceList/view'
 
 export const Main = () => {
-    return (<>Hello, World</>)
+    return (<div><InvoicesList/></div>)
 }

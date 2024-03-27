@@ -1,0 +1,1 @@
+import './features/invoiceList/model/init'

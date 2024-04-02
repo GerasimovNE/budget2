@@ -20,11 +20,11 @@ import {
     setDeadline,
     $status,
     setStatus,
-} from '../modal/private';
+    createModalToggle,
+} from '../../modal';
 import styled from 'styled-components';
 import { useStore } from 'effector-react';
 import { Input, Button, TextArea, Radio, CheckBox, Accordion } from '@/ui';
-import { createModalToggle } from '../modal/public';
 import useCloseModalOnClick from '@/hooks/closeModalOnClick';
 
 export const InvoiceCreateModal = () => {
@@ -56,7 +56,7 @@ export const InvoiceCreateModal = () => {
         { label: 'active', value: 'active' },
         { label: 'complite', value: 'complited' },
         { label: 'aborted', value: 'aborted' },
-        { label: 'deadline', value: 'deadline' },
+        { label: 'overlated', value: 'overlated' },
     ];
 
     const closeRef = React.useRef(null);

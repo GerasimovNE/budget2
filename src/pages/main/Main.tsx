@@ -1,8 +1,7 @@
 import React from 'react';
-import { NavBar } from '@/features/navBar/view/NavBar';
-import { InvoicesList } from '@/features/invoiceList/view';
-import { FilterBar } from '@/features/filterBar/view/FilterBar';
-import { InvoiceCreateModal } from '@/features/invoiceCreateModal/view/InvoiceCreateModal';
+import { NavBar } from '@/features/app/view';
+import { InvoicesList } from '@/features/invoice/view';
+import { InvoiceCreateModal } from '@/features/invoice-create-modal/view';
 import styled from 'styled-components';
 
 export const Main = () => {

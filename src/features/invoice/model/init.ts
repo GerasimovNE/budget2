@@ -6,7 +6,7 @@ import {
     $test,
     setTest,
 } from './private';
-import { createInvoiceFx } from '@/features/invoiceCreateModal/modal/public';
+import { createInvoiceFx } from '@/features/invoice-create-modal/modal';
 
 import { sample } from 'effector';
 

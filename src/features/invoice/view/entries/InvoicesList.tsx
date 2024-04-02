@@ -1,8 +1,8 @@
 import React from 'react';
-import { InvoiceItem } from './parts/InvoiceItem';
+import { InvoiceItem } from '../parts';
 import { useStore } from 'effector-react';
 import styled from 'styled-components';
-import { $invoices, getInvoicesFx } from '../model/private';
+import { $invoices, getInvoicesFx } from '../../model';
 
 export const InvoicesList = () => {
     const invoices = useStore($invoices);

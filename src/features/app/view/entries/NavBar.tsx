@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from '@/ui/button';
-import { createModalToggle } from '@/features/invoiceCreateModal/modal/public';
+import { createModalToggle } from '@/features/invoice-create-modal/modal';
 export const NavBar = () => {
     return (
         <Container>

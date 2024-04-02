@@ -10,6 +10,7 @@
     "lint:fix": "eslint \"./**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.5",
     "@babel/runtime": "^7.15.3",
     "axios": "^1.6.8",
     "effector": "^22.4.1",

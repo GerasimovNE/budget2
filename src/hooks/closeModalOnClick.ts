@@ -1,24 +1,24 @@
-import React from "react";
+import React from 'react';
 
-
-const useCloseModalOnClick = (isOpen:boolean,closeRef:React.MutableRefObject<any>, closeEffect:()=>void) => {
-     React.useEffect(() => {
-        if (!isOpen) {
-            return;
+const useCloseModalOnClick = (
+    isOpen: boolean,
+    closeRef: React.MutableRefObject<any>,
+    closeEffect: () => void,
+    buttonId?: string
+) => {
+    const handleClick = React.useCallback((e) => {
+        if (buttonId) {
+            if (buttonId == e.target.id) {
+                return;
+            }
         }
-        const handleClick = (e: MouseEvent) => {
-            if (!closeRef.current) {
-                return;
-            }
-            if (!closeRef.current.contains(e.target)) {
-                closeEffect();
-                return;
-            }
-        };
-        document.addEventListener('click', (e) => handleClick(e));
-        document.removeEventListener('click', (e) => handleClick(e));
+        if (!closeRef.current.contains(e.target)) closeEffect();
+    }, []);
+    React.useEffect(() => {
+        isOpen
+            ? document.addEventListener('click', handleClick)
+            : document.removeEventListener('click', handleClick);
     }, [isOpen]);
+};
 
-}
-
-export default useCloseModalOnClick
+export default useCloseModalOnClick;

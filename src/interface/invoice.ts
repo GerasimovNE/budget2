@@ -1,15 +1,14 @@
-
-export type Invoice={
-    id?:number,
-    name:string,
-    description?:string,
-    cost:number,
-    type:"task"|"expense"|"income",
-    status?:string,
-    deadline?: "monthly"|"daily"|"weekly",
-	submitted?: string,
-	created_at?: string,
-	updated_at?: string
-
-}
-
+import { Tag } from './tag';
+export type Invoice = {
+    id?: number;
+    name: string;
+    description?: string;
+    cost: string;
+    type: string;
+    status: string;
+    deadline: string | null;
+    submitted?: string;
+    created_at?: string;
+    updated_at?: string;
+    tags?: Tag[];
+};

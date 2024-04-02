@@ -1,10 +1,12 @@
-import React from 'react'
-import { Routes } from './Routes'
+import React from 'react';
+import { Routes } from './Routes';
+import { GlobalStyle } from './styles/globalStyle';
 
-import './init'
+import './init';
 const App = () => (
-  <div>
-    <Routes />
-  </div>
-)
-export default App
+    <div>
+        <GlobalStyle />
+        <Routes />
+    </div>
+);
+export default App;

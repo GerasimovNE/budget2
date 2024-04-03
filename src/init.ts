@@ -1,2 +1,2 @@
-import './features/invoiceList/model/init';
-import './features/invoiceCreateModal/modal/init';
+import './features/invoice/model/init';
+import './features/invoice-create-modal/modal/init';

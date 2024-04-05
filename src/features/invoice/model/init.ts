@@ -7,6 +7,7 @@ import {
     setTest,
 } from './private';
 import { createInvoiceFx } from '@/features/invoice-create-modal/modal';
+import { deleteTagFx } from '@/features/tags/model';
 
 import { sample } from 'effector';
 
@@ -23,6 +24,6 @@ deleteInvoiceFx.use(async (id) => {
 });
 
 sample({
-    clock: [createInvoiceFx],
+    clock: [createInvoiceFx, deleteTagFx],
     target: getInvoicesFx,
 });

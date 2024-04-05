@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Invoice } from '@/interface';
-import { Accordion } from '@/ui/accordion';
+import { Accordion, TagElement } from '@/ui';
 
 export const InvoiceItem: React.FC<Invoice> = (invoice) => {
     return (
@@ -24,7 +24,7 @@ export const InvoiceItem: React.FC<Invoice> = (invoice) => {
 
             <TagContainer>
                 {invoice.tags?.map((tag) => (
-                    <Tag key={tag.id}>{tag.name}</Tag>
+                    <TagElement key={tag.id}>{tag.name}</TagElement>
                 ))}
             </TagContainer>
         </Container>
@@ -63,12 +63,6 @@ const TextCont = styled.div`
 `;
 const H2 = styled.p`
     font-weight: lighter;
-`;
-
-const Tag = styled.div`
-    background-color: var(--color-tag);
-    padding: 5px;
-    border-radius: 40px;
 `;
 
 const TagContainer = styled.div`

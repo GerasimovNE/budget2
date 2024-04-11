@@ -16,7 +16,7 @@ import {
     setDeadline,
     $deadline,
     $repeatCheckbox,
-    $deadlineChekbox,
+    $deadlineCheckbox,
     resetDeadlineCheckbox,
     $isOpenCreateModal,
     createInvoiceEvent,
@@ -39,7 +39,7 @@ $cost.on(setCost, (_, c) => c).reset(resetCost);
 
 $description.on(setDescription, (_, d) => d).reset(resetDescription);
 
-$deadlineChekbox
+$deadlineCheckbox
     .on(setDeadlineCheckbox, (_, b) => b)
     .reset(resetDeadlineCheckbox);
 
@@ -63,7 +63,7 @@ sample({
         $description,
         $status,
         $deadline,
-        $deadlineChekbox,
+        $deadlineCheckbox,
         $repeatCheckbox,
         $repeat,
     ]),

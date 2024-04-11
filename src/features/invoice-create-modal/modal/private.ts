@@ -20,7 +20,7 @@ export const $description = domain.store('');
 export const setDescription = domain.event<string>();
 export const resetDescription = domain.event();
 
-export const $deadlineChekbox = domain.store(false);
+export const $deadlineCheckbox = domain.store(false);
 export const setDeadlineCheckbox = domain.event<boolean>();
 export const resetDeadlineCheckbox = domain.event();
 export const $deadline = domain.store('');

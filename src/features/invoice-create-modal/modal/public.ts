@@ -1,7 +1,7 @@
 import { Invoice } from '@/interface';
 import { createDomain } from 'effector';
 
-const domain = createDomain();
+const d = createDomain();
 
-export const createModalToggle = domain.event();
-export const createInvoiceFx = domain.effect<Invoice, void>();
+export const createModalToggle = d.event();
+export const createInvoiceFx = d.effect<Invoice, void>();

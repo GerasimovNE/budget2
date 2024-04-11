@@ -2,18 +2,37 @@ import React from 'react';
 import styled from 'styled-components';
 import { Invoice } from '@/interface';
 import { Accordion, TagElement } from '@/ui';
+import {
+    setInvoice,
+    changeModalToggle,
+} from '@/features/invoice-change/model/public';
 
 export const InvoiceItem: React.FC<Invoice> = (invoice) => {
+    const ref = React.useRef(null);
+    const handler = (ref: React.MutableRefObject<any>, e: EventTarget) => {
+        if (!ref.current.contains(e)) {
+            setInvoice(invoice);
+            changeModalToggle();
+        }
+    };
     return (
-        <Container status={invoice.status ? invoice.status : ''}>
+        <Container
+            id={invoice.id ? `${invoice.id}` : invoice.name}
+            status={invoice.status ? invoice.status : ''}
+            onClick={(e) => handler(ref, e.target)}
+        >
             <TextCont>
                 <div>{invoice.name}</div>
                 <div>{invoice.cost}</div>
             </TextCont>
             {invoice.description ? (
-                <Accordion label="description">{invoice.description}</Accordion>
+                <div ref={ref}>
+                    <Accordion label="description">
+                        {invoice.description}
+                    </Accordion>
+                </div>
             ) : (
-                <></>
+                <div ref={ref}></div>
             )}
             <TextCont>
                 <H2>type:{invoice.type}</H2>

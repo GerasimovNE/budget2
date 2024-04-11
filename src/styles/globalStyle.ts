@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-border-line:#656c9b;
     font-family: nunito;
     font-weight: bold;
-   
+  
 }
 @media (prefers-color-scheme: dark){
     :root{
@@ -28,4 +28,8 @@ export const GlobalStyle = createGlobalStyle`
     --color-hover:#f3f3f3;
      --color-tag:#d5e9fd;
 }
-}`;
+}
+  ::-webkit-scrollbar{
+       width:0px;
+    }
+   `;

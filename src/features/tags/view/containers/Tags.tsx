@@ -4,10 +4,31 @@ import { useStore } from 'effector-react';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { $isDeleteVisible, $tags, deleteTagFx } from '../../model';
 import { TagElement } from '@/ui';
+import { Tag } from '@/interface';
 
-export const Tags = () => {
+type TagListProps = {
+    tagsSelected: Tag[];
+    onChangeTag: (t: Tag[]) => void;
+};
+
+export const Tags = ({ tagsSelected, onChangeTag }: TagListProps) => {
     const tags = useStore($tags);
     const isDeleteVisible = useStore($isDeleteVisible);
+
+    const onChangeFunc = (e: boolean, tag: Tag) => {
+        const t = [...tagsSelected];
+        console.log(tag);
+        if (e) {
+            t.push(tag);
+        } else {
+            t.splice(
+                t.findIndex((sTag) => sTag.id === tag.id),
+                1
+            );
+        }
+        onChangeTag(t);
+    };
+
     return (
         <TagsContainer>
             {tags.map((tag) => (
@@ -15,11 +36,12 @@ export const Tags = () => {
                     {tag.name}
                     <Input
                         type="checkbox"
-                        // checked={
-                        //     selectedTags.findIndex(
-                        //         (sTag) => sTag.id == tag.id
-                        //     ) > -1
-                        // }
+                        checked={
+                            tagsSelected?.find((sTag) => sTag.id == tag.id)
+                                ? true
+                                : false
+                        }
+                        onChange={(e) => onChangeFunc(e.target.checked, tag)}
                     />
                     <DeleteLabel
                         visible={isDeleteVisible}

@@ -10,5 +10,11 @@ export type Invoice = {
     submitted?: string;
     created_at?: string;
     updated_at?: string;
-    tags?: Tag[];
+    repeat_interval?: string | null;
+    tags: Tag[];
+};
+
+export type AttachTags = {
+    invoice_id: number;
+    tag_id: number[];
 };

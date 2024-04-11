@@ -3,7 +3,6 @@ import { InvoiceItem } from '../parts';
 import { useStore } from 'effector-react';
 import styled from 'styled-components';
 import { $invoices, getInvoicesFx } from '../../model';
-import { TagsList } from '@/features/tags/view/entries';
 
 export const InvoicesList = () => {
     const invoices = useStore($invoices);
@@ -13,8 +12,7 @@ export const InvoicesList = () => {
 
     return (
         <Container>
-            <TagsList />
-            {invoices!.map((invoice) => (
+            {invoices?.map((invoice) => (
                 <InvoiceItem key={invoice.id} {...invoice} />
             ))}
         </Container>

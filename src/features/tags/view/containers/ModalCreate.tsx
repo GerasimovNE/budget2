@@ -33,6 +33,8 @@ const Container = styled.div<{ isOpen: boolean }>`
     display: ${(props) => (props.isOpen ? 'flex' : 'none')};
     position: absolute;
     top: 80px;
+    left: -10px;
+    z-index: 5;
     flex-direction: column;
     color: var(--color-text);
     gap: 10px;

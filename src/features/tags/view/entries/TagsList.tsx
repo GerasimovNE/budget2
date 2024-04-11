@@ -4,14 +4,20 @@ import { Button } from '@/ui';
 import { CreateTagModal, Tags } from '../containers';
 import { getTagsFx, createModalToggle, deleteVisibleToggle } from '../../model';
 import { DeleteOutlined } from '@ant-design/icons';
+import { Tag } from '@/interface';
 
-export const TagsList = () => {
+type Props = {
+    tagsSelected: Tag[];
+    onChangeTag: (t: Tag[]) => void;
+};
+
+export const TagsList = ({ onChangeTag, tagsSelected }: Props) => {
     React.useEffect(() => {
         getTagsFx();
     }, []);
     return (
         <Container>
-            <Tags />
+            <Tags onChangeTag={onChangeTag} tagsSelected={tagsSelected} />
             <ButtonCont>
                 <Button onClick={() => deleteVisibleToggle()}>
                     <DeleteCont>
@@ -36,7 +42,9 @@ const ButtonCont = styled.div`
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-color: var(--color-background);
+    padding: 5px;
     width: 100%;
     height: 100%;
     border-radius: 40px;

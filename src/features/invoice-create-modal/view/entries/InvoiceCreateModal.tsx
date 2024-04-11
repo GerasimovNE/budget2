@@ -8,7 +8,7 @@ import {
     setType,
     $description,
     setDescription,
-    $deadlineChekbox,
+    $deadlineCheckbox,
     setDeadlineCheckbox,
     $isOpenCreateModal,
     createInvoiceEvent,
@@ -33,7 +33,7 @@ export const InvoiceCreateModal = () => {
     const cost = useStore($cost);
     const type = useStore($type);
     const description = useStore($description);
-    const deadlineCheckbox = useStore($deadlineChekbox);
+    const deadlineCheckbox = useStore($deadlineCheckbox);
     const deadline = useStore($deadline);
     const repeat = useStore($repeat);
     const repeatCheckbox = useStore($repeatCheckbox);
@@ -56,7 +56,6 @@ export const InvoiceCreateModal = () => {
         { label: 'active', value: 'active' },
         { label: 'complite', value: 'complited' },
         { label: 'aborted', value: 'aborted' },
-        { label: 'overlated', value: 'overlated' },
     ];
 
     const closeRef = React.useRef(null);
@@ -92,7 +91,7 @@ export const InvoiceCreateModal = () => {
             <Cont50>
                 <Radio
                     labels={radioLabels}
-                    name="type"
+                    name="types"
                     value={type}
                     setter={setType}
                 />

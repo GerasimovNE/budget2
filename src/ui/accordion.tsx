@@ -40,6 +40,8 @@ const Label = styled.label`
         transform: rotate(180deg);
     }
     &:has(input[id='accord']:checked) div[id='body'] {
-        display: contents;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 `;

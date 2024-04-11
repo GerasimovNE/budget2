@@ -1,3 +1,5 @@
+import { Event } from 'effector';
+
 export type Tag = {
     id: number;
     name: string;

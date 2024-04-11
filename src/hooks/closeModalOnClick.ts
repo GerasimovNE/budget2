@@ -6,14 +6,17 @@ const useCloseModalOnClick = (
     closeEffect: () => void,
     buttonId?: string
 ) => {
-    const handleClick = React.useCallback((e) => {
-        if (buttonId) {
-            if (buttonId == e.target.id) {
-                return;
+    const handleClick = React.useCallback(
+        (e) => {
+            if (buttonId) {
+                if (buttonId == e.target.id) {
+                    return;
+                }
             }
-        }
-        if (!closeRef.current.contains(e.target)) closeEffect();
-    }, []);
+            if (!closeRef.current.contains(e.target)) closeEffect();
+        },
+        [buttonId, closeRef]
+    );
     React.useEffect(() => {
         isOpen
             ? document.addEventListener('click', handleClick)

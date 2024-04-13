@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useStore } from 'effector-react';
 import { Button } from '@/ui/button';
 import { createModalToggle } from '@/features/invoice-create-modal/modal';
+
 export const NavBar = () => {
     return (
         <Container>

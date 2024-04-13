@@ -2,12 +2,13 @@ import React from 'react';
 import { InvoiceItem } from '../parts';
 import { useStore } from 'effector-react';
 import styled from 'styled-components';
-import { $invoices, getInvoicesFx } from '../../model';
+import { $invoices, getInvoicesEvent } from '../../model';
+import { PaginationBar } from '../containers';
 
 export const InvoicesList = () => {
     const invoices = useStore($invoices);
     React.useEffect(() => {
-        getInvoicesFx();
+        getInvoicesEvent();
     }, []);
 
     return (
@@ -15,6 +16,7 @@ export const InvoicesList = () => {
             {invoices?.map((invoice) => (
                 <InvoiceItem key={invoice.id} {...invoice} />
             ))}
+            <PaginationBar />
         </Container>
     );
 };

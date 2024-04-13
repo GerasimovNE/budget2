@@ -1,14 +1,21 @@
 import { createDomain } from 'effector';
-import { Invoice } from '@/interface';
+import { Invoice, Params } from '@/interface';
 
-const domain = createDomain();
+const d = createDomain();
 
-export const $invoices = domain.store<Invoice[]>([]);
+export const $invoices = d.store<Invoice[]>([]);
 
-export const getInvoicesFx = domain.effect<void, Invoice[]>();
+export const getInvoicesEvent = d.event();
+export const getInvoicesFx = d.effect<
+    Params,
+    { data: Invoice[]; current_page: number; last_page: number }
+>();
 
-export const deleteInvoiceFx = domain.effect<number, void>();
+export const deleteInvoiceFx = d.effect<number, void>();
 
-export const $test = domain.store('');
-
-export const setTest = domain.event<string>();
+export const $page = d.createStore<number>(1);
+export const resetPage = d.createEvent();
+export const setPage = d.createEvent<number>();
+export const $params = d.createStore<Params>({ page: 1 });
+export const $lastPage = d.createStore<number>(1);
+export const $currentPage = d.createStore<number>(1);

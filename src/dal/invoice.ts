@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { Invoice, AttachTags } from '@/interface';
-export const getInvoice = () => {
-    return axios.get('api/invoices', {});
+import { Invoice, AttachTags, Params } from '@/interface';
+export const getInvoice = (params: Params) => {
+    return axios.get('api/invoices', { params: params });
 };
 
 export const createInvoice = (invoice: Invoice) => {

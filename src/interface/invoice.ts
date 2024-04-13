@@ -18,3 +18,7 @@ export type AttachTags = {
     invoice_id: number;
     tag_id: number[];
 };
+
+export type Params = {
+    page: number;
+};

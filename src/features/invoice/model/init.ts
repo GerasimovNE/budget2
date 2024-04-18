@@ -46,7 +46,7 @@ sample({
     fn: ([page, search, filterParams]) => {
         const t: Params = { page, ...filterParams };
         if (search) {
-            t.search = 'search';
+            t.search = search;
         }
         return t;
     },

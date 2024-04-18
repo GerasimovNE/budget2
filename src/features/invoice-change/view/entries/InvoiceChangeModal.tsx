@@ -26,7 +26,10 @@ export const InvoiceChangeModal = () => {
             <div>
                 <MainForm />
                 <Cont>
-                    <LeftBottomForm />
+                    <Cont50>
+                        <LeftBottomForm />
+                    </Cont50>
+
                     <TagsList
                         tagsSelected={invoice.tags}
                         onChangeTag={(t: Tag[]) => setTags(t)}
@@ -75,6 +78,7 @@ const Container = styled.div<{ isOpen: boolean }>`
 const Cont = styled.div`
     display: flex;
     margin-top: 18px;
+    justify-content: space-around;
     height: 305px;
     gap: 10px;
 `;
@@ -82,4 +86,8 @@ const Cont = styled.div`
 const ButtonCont = styled.div`
     display: flex;
     justify-content: space-between;
+`;
+
+const Cont50 = styled.div`
+    min-width: 300px;
 `;

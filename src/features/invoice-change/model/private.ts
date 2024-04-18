@@ -30,13 +30,15 @@ export const setType = d.event<string>();
 export const setDeadline = d.event<string>();
 export const setStatus = d.event<string>();
 export const setRepeat = d.event<string>();
-export const $deadlineCheckbox = d.store(false);
 
-export const setDeadlineCheckbox = d.event<boolean>();
+export const $deadlineCheckbox = d.store(false);
+export const deadlineToggle = d.event();
 
 export const $repeatCheckbox = d.store(false);
+export const repeatToggle = d.event();
 
-export const setRepeatCheckbox = d.event<boolean>();
+export const $repeatCount = d.store(1);
+export const setRepeatCount = d.event<number>();
 
 export const $isOpenModalChange = d.store(false);
 

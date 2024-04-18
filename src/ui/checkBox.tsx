@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import React from 'react';
-import { Event } from 'effector';
 
 type Props = {
-    cheked: boolean;
-    setter: Event<boolean>;
+    checked: boolean;
+    setter: () => void;
 };
 export const CheckBox: React.FC<Props> = (props) => {
     return (
         <Label>
             <Input
                 type="checkbox"
-                checked={props.cheked}
-                onChange={(e) => props.setter(e.target.checked)}
+                checked={props.checked}
+                onChange={() => {
+                    props.setter();
+                }}
             />
         </Label>
     );

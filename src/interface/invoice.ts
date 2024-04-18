@@ -20,5 +20,12 @@ export type AttachTags = {
 };
 
 export type Params = {
-    page: number;
+    page?: number;
+    search?: string;
+    maxCost?: number;
+    minCost?: number;
+    type?: string;
+    status?: string;
+    orderBy?: string;
+    orderDir?: string;
 };

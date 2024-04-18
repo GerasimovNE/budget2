@@ -27,7 +27,6 @@ const CheckBox = styled.input`
 const Container = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 100%;
 `;
 const Label = styled.label`
     display: flex;

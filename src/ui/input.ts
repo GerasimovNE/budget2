@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Input = styled.input`
     border: none;
+
     background-color: var(--color-background);
     border-radius: 30px;
     color: var(--color-text);

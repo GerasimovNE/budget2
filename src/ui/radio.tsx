@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import React from 'react';
-import { Event } from 'effector';
 type Props = {
     labels: {
         value: string;
@@ -8,7 +7,7 @@ type Props = {
     }[];
     name: string;
     value: string;
-    setter: Event<string>;
+    setter: (s: string) => void;
     disabled?: boolean;
 };
 

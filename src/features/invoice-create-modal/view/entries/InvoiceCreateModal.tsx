@@ -9,11 +9,11 @@ import {
     $description,
     setDescription,
     $deadlineCheckbox,
-    setDeadlineCheckbox,
+    deadlineToggle,
     $isOpenCreateModal,
     createInvoiceEvent,
     $repeatCheckbox,
-    setRepeatCheckbox,
+    repeatToggle,
     $repeat,
     setRepeat,
     $deadline,
@@ -110,8 +110,8 @@ export const InvoiceCreateModal = () => {
                     <CheckBoxCont>
                         deadline
                         <CheckBox
-                            cheked={deadlineCheckbox}
-                            setter={setDeadlineCheckbox}
+                            checked={deadlineCheckbox}
+                            setter={deadlineToggle}
                         />
                     </CheckBoxCont>
 
@@ -125,8 +125,8 @@ export const InvoiceCreateModal = () => {
                     <CheckBoxCont>
                         repeat
                         <CheckBox
-                            cheked={repeatCheckbox}
-                            setter={setRepeatCheckbox}
+                            checked={repeatCheckbox}
+                            setter={repeatToggle}
                         />
                     </CheckBoxCont>
 
@@ -151,8 +151,8 @@ const Container = styled.div<{ isOpen: boolean }>`
     flex-direction: column;
     color: var(--color-text);
     gap: 10px;
-    border-radius: 40px;
     background-color: var(--color-primary);
+    border-radius: 40px;
     box-shadow: 0px 0px 5px var(--color-text);
     width: 80vw;
     min-width: 450px;

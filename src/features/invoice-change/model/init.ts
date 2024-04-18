@@ -3,15 +3,17 @@ import { attachTags, deleteInvoice, putchInvoice } from '@/dal/invoice';
 import {
     $invoice,
     resetInvoise,
+    $repeatCount,
+    setRepeatCount,
     $isOpenModalChange,
     setName,
     setCost,
     setDescription,
     setType,
     $deadlineCheckbox,
-    setDeadlineCheckbox,
+    deadlineToggle,
+    repeatToggle,
     $repeatCheckbox,
-    setRepeatCheckbox,
     setDeadline,
     setRepeat,
     setTags,
@@ -69,9 +71,9 @@ $invoice
         t.tags = tags;
         return t;
     });
-
-$deadlineCheckbox.on(setDeadlineCheckbox, (_, b) => b);
-$repeatCheckbox.on(setRepeatCheckbox, (_, b) => b);
+$repeatCount.on(setRepeatCount, (_, c) => c).reset(changeModalToggle);
+$deadlineCheckbox.on(deadlineToggle, (_) => !_);
+$repeatCheckbox.on(repeatToggle, (_) => !_);
 $isOpenModalChange.on(changeModalToggle, (_) => !_);
 
 deleteInvoiceFx.use(async (id) => {

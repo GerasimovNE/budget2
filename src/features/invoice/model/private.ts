@@ -13,9 +13,8 @@ export const getInvoicesFx = d.effect<
 
 export const deleteInvoiceFx = d.effect<number, void>();
 
-export const $page = d.createStore<number>(1);
-export const resetPage = d.createEvent();
-export const setPage = d.createEvent<number>();
-export const $params = d.createStore<Params>({ page: 1 });
-export const $lastPage = d.createStore<number>(1);
-export const $currentPage = d.createStore<number>(1);
+export const $page = d.store(1);
+export const resetPage = d.event();
+export const setPage = d.event<number>();
+export const $lastPage = d.store<number>(1);
+export const $currentPage = d.store<number>(1);

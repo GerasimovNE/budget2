@@ -3,6 +3,7 @@ import { NavBar } from '@/features/app/view';
 import { InvoicesList } from '@/features/invoice/view';
 import { InvoiceCreateModal } from '@/features/invoice-create-modal/view';
 import { InvoiceChangeModal } from '@/features/invoice-change/view/entries';
+import { FilterBar } from '@/features/filter-bar/view/entries/FilterBar';
 import styled from 'styled-components';
 
 export const Main = () => {
@@ -10,6 +11,7 @@ export const Main = () => {
         <div>
             <NavBar />
             <Body>
+                <FilterBar />
                 <InvoiceCreateModal />
                 <InvoiceChangeModal />
                 <InvoicesList />

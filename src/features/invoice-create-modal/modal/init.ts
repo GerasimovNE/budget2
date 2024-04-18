@@ -4,52 +4,42 @@ import {
     setCost,
     $name,
     setName,
-    resetCost,
-    resetType,
-    resetName,
     $type,
     setType,
-    setDeadlineCheckbox,
-    resetDeadline,
-    resetRepeatCheckbox,
-    setRepeatCheckbox,
     setDeadline,
     $deadline,
     $repeatCheckbox,
     $deadlineCheckbox,
-    resetDeadlineCheckbox,
     $isOpenCreateModal,
     createInvoiceEvent,
     $description,
     setDescription,
-    resetDescription,
     $repeat,
     setRepeat,
-    resetRepeat,
     $status,
     setStatus,
-    resetStatus,
+    deadlineToggle,
+    repeatToggle,
+    resetForm,
 } from './private';
 import { createModalToggle, createInvoiceFx } from './public';
 import { combine, sample } from 'effector';
 
-$name.on(setName, (_, n) => n).reset(resetName);
-$type.on(setType, (_, t) => t).reset(resetType);
-$cost.on(setCost, (_, c) => c).reset(resetCost);
+$name.on(setName, (_, n) => n).reset(resetForm);
+$type.on(setType, (_, t) => t).reset(resetForm);
+$cost.on(setCost, (_, c) => c).reset(resetForm);
 
-$description.on(setDescription, (_, d) => d).reset(resetDescription);
+$description.on(setDescription, (_, d) => d).reset(resetForm);
 
-$deadlineCheckbox
-    .on(setDeadlineCheckbox, (_, b) => b)
-    .reset(resetDeadlineCheckbox);
+$deadlineCheckbox.on(deadlineToggle, (_) => !_).reset(resetForm);
 
-$isOpenCreateModal.on(createModalToggle, (_) => !_);
-$deadline.on(setDeadline, (_, d) => d).reset(resetDeadline);
-$repeatCheckbox.on(setRepeatCheckbox, (_, b) => b).reset(resetRepeatCheckbox);
+$isOpenCreateModal.on(createModalToggle, (_) => !_).reset(resetForm);
+$deadline.on(setDeadline, (_, d) => d).reset(resetForm);
+$repeatCheckbox.on(repeatToggle, (_) => !_).reset(resetForm);
 
-$repeat.on(setRepeat, (_, r) => r).reset(resetRepeat);
+$repeat.on(setRepeat, (_, r) => r).reset(resetForm);
 
-$status.on(setStatus, (_, s) => s).reset(resetStatus);
+$status.on(setStatus, (_, s) => s).reset(resetForm);
 createInvoiceFx.use(async (invoice) => {
     await createInvoice(invoice);
 });
@@ -88,17 +78,5 @@ sample({
         repeat_interval: repeatCheckbox ? repeat : null,
         tags: [],
     }),
-    target: [
-        createInvoiceFx,
-        createModalToggle,
-        resetCost,
-        resetName,
-        resetType,
-        resetDescription,
-        resetDeadlineCheckbox,
-        resetRepeatCheckbox,
-        resetDeadline,
-        resetRepeat,
-        resetStatus,
-    ],
+    target: [createInvoiceFx, createModalToggle, resetForm],
 });

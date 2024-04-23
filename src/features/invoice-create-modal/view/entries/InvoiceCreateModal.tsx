@@ -147,6 +147,7 @@ export const InvoiceCreateModal = () => {
 const Container = styled.div<{ isOpen: boolean }>`
     display: ${(props) => (props.isOpen ? 'flex' : 'none')};
     position: fixed;
+    height: 81vh;
     top: 80px;
     flex-direction: column;
     color: var(--color-text);
@@ -154,12 +155,15 @@ const Container = styled.div<{ isOpen: boolean }>`
     background-color: var(--color-primary);
     border-radius: 40px;
     box-shadow: 0px 0px 5px var(--color-text);
-    width: 80vw;
-    min-width: 450px;
-    max-width: 600px;
     padding: 20px;
     font-size: 16px;
     margin: 10px;
+    @media (min-width: 350px) {
+        width: 300px;
+    }
+    @media (min-width: 768px) {
+        width: 560px;
+    }
 `;
 const Cont50 = styled.div`
     width: 60%;

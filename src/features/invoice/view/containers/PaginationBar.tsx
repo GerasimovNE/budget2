@@ -62,4 +62,5 @@ const Cont = styled.div`
     width: 100%;
     margin: 30px;
     color: var(--color-text);
+    user-select: none;
 `;

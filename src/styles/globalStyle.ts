@@ -9,8 +9,10 @@ export const GlobalStyle = createGlobalStyle`
     --color-border-line:#656c9b;
     font-family: nunito;
     font-weight: bold;
+
     
 }
+
 @media (prefers-color-scheme: dark){
     :root{
     --color-navButtonDis:#505062;
@@ -30,6 +32,8 @@ export const GlobalStyle = createGlobalStyle`
      --color-tag:#d5e9fd;
      --color-navButtonDis:#c9c9d5;
 }
+
+
 }
   ::-webkit-scrollbar{
        width:0px;

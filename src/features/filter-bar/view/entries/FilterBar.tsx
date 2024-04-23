@@ -35,11 +35,16 @@ const Container = styled.div<{ isOpen: boolean }>`
     justify-content: space-between;
     color: var(--color-text);
     background-color: var(--color-primary);
-    width: 380px;
     padding: 25px;
     font-size: 16px;
     border-radius: 40px;
     box-shadow: 0px 0px 5px var(--color-text);
+    @media (min-width: 350px) {
+        width: 300px;
+    }
+    @media (min-width: 768px) {
+        width: 560px;
+    }
 `;
 
 const ButtonCont = styled.div`

@@ -39,5 +39,5 @@ export const MainForm = () => {
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
 `;

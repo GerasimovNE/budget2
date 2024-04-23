@@ -112,23 +112,28 @@ export const LeftBottomForm = () => {
 };
 
 const Cont = styled.div`
-    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
+    @media (min-width: 350px) {
+        width: 300px;
+    }
+    @media (min-width: 768px) {
+        width: 560px;
+    }
 `;
 const CheckBoxCont = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    gap: 15px;
+    gap: 10px;
     font-size: 20px;
 `;
 
 const ContCount = styled.div`
     width: 100px;
     input {
-        max-width: 90px;
+        max-width: 80px;
     }
 `;

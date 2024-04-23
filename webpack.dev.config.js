@@ -9,7 +9,7 @@ module.exports = merge(baseConfig, {
     devtool: 'inline-source-map',
     devServer: {
         hot: true,
-        host: process.env.DEV_SERVER_HOST,
+        host: '0.0.0.0',
         port: +process.env.DEV_SERVER_PORT,
         historyApiFallback: true,
         proxy: {

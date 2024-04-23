@@ -44,7 +44,6 @@ const RadioInput = styled.input`
 const Container = styled.div`
     display: flex;
     position: relative;
-    z-index: 1;
     border-radius: 40px;
     background-color: var(--color-background);
     &:has(input:checked) div {

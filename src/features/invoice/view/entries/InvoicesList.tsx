@@ -26,9 +26,12 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    width: 80%;
-    min-width: 450px;
-    max-width: 600px;
     padding-top: 100px;
     padding-bottom: 30px;
+    @media (min-width: 350px) {
+        width: 300px;
+    }
+    @media (min-width: 768px) {
+        width: 560px;
+    }
 `;

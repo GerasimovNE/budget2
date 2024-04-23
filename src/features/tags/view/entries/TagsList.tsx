@@ -36,7 +36,7 @@ export const TagsList = ({ onChangeTag, tagsSelected }: Props) => {
 const ButtonCont = styled.div`
     display: flex;
     color: var(--color-text);
-    margin: 12px;
+    margin: 8px;
     justify-content: space-between;
 `;
 const Container = styled.div`
@@ -45,7 +45,6 @@ const Container = styled.div`
     justify-content: space-between;
     background-color: var(--color-background);
     padding: 5px;
-    width: 100%;
     height: 100%;
     border-radius: 40px;
 `;

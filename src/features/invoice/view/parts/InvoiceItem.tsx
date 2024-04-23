@@ -69,7 +69,7 @@ const Container = styled.div<{ status: string }>`
                 : props.status === 'aborted'
                 ? 'var(--color-aborted)'
                 : 'black'};
-
+    user-select: none;
     &:hover {
         background-color: var(--color-hover);
     }

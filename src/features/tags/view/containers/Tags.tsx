@@ -65,7 +65,7 @@ const Input = styled.input`
 `;
 
 const TagsContainer = styled.div`
-    padding: 10px;
+    padding: 4px 8px;
     display: flex;
 
     gap: 8px;

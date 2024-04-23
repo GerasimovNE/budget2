@@ -7,8 +7,8 @@ export const Button = styled.button`
     width: fit-content;
     color: var(--clor-text);
     font-family: nunito;
-    font-size: 20px;
-    padding: 10px;
+    font-size: 18px;
+    padding: 8px;
     box-shadow: 0px 0px 5px var(--color-border-line);
     &:hover {
         background-color: var(--color-hover);

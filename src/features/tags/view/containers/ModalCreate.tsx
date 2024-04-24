@@ -18,8 +18,9 @@ export const CreateTagModal = () => {
     useCloseModalOnClick(isOpen, closeRef, createModalToggle, 'createTag');
 
     return (
-        <Container isOpen={isOpen} ref={closeRef}>
+        <Container id="createTag" isOpen={isOpen} ref={closeRef}>
             <Input
+                id="createTag"
                 value={tagName}
                 placeholder="name"
                 onChange={(e) => setTagName(e.target.value)}

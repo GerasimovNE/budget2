@@ -11,7 +11,7 @@ import {
     $lastPage,
 } from './private';
 import { $search, searchEvent } from '@/features/app/model/public';
-import { createInvoiceFx } from '@/features/invoice-create-modal/modal';
+import { invoiceCreated } from '@/features/invoice-create-modal/modal';
 import {
     setFilterParamsEvent,
     $filterParams,
@@ -31,7 +31,7 @@ $lastPage.on(getInvoicesFx.doneData, (_, data) => data.last_page);
 getInvoicesFx.use(async (params) => {
     const { data } = await getInvoice(params);
     data.data.map((i: Invoice) => {
-        i.deadline = i.deadline ? i.deadline.split(' ')[0] : null;
+        i.deadline = i.deadline ? i.deadline.split(' ')[0] : '';
     });
     return data;
 });
@@ -55,8 +55,8 @@ sample({
 
 sample({
     clock: [
-        createInvoiceFx,
-        deleteTagFx,
+        invoiceCreated,
+        deleteTagFx.doneData,
         invoiceIsChanged,
         searchEvent,
         setPage,

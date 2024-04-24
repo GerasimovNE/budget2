@@ -16,7 +16,7 @@ export const Radio: React.FC<Props> = (props) => {
         (label) => label.value == props.value
     );
     return (
-        <Container>
+        <Container id={props.name}>
             <Slider length={props.labels.length} position={position} />
             {props.labels.map((label, index) => (
                 <Label key={index} length={props.labels.length}>

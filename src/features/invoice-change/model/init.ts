@@ -3,8 +3,6 @@ import { attachTags, deleteInvoice, putchInvoice } from '@/dal/invoice';
 import {
     $invoice,
     resetInvoise,
-    $repeatCount,
-    setRepeatCount,
     $isOpenModalChange,
     setName,
     setCost,
@@ -12,8 +10,6 @@ import {
     setType,
     $deadlineCheckbox,
     deadlineToggle,
-    repeatToggle,
-    $repeatCheckbox,
     setDeadline,
     setRepeat,
     setTags,
@@ -71,9 +67,8 @@ $invoice
         t.tags = tags;
         return t;
     });
-$repeatCount.on(setRepeatCount, (_, c) => c).reset(changeModalToggle);
 $deadlineCheckbox.on(deadlineToggle, (_) => !_);
-$repeatCheckbox.on(repeatToggle, (_) => !_);
+
 $isOpenModalChange.on(changeModalToggle, (_) => !_);
 
 deleteInvoiceFx.use(async (id) => {
@@ -88,12 +83,15 @@ putchInvoiceFx.use(async (invoice) => {
     await putchInvoice(invoice);
 });
 
+sample({ clock: changeInvoiceEvent, source: $invoice, target: putchInvoiceFx });
+
+sample({ clock: putchInvoiceFx, target: attachTagsEvent });
 sample({
     clock: attachTagsEvent,
     source: $invoice,
     fn: (invoice) => ({
         invoice_id: invoice.id ? invoice.id : -1,
-        tag_id: invoice.tags.map((t) => t.id),
+        tag_id: invoice.tags ? invoice.tags.map((t) => t.id) : [],
     }),
     target: attachTagsFx,
 });
@@ -104,10 +102,6 @@ sample({
     fn: (invoice) => (invoice.id ? invoice.id : -1),
     target: deleteInvoiceFx,
 });
-
-sample({ clock: changeInvoiceEvent, source: $invoice, target: putchInvoiceFx });
-
-sample({ clock: putchInvoiceFx, target: attachTagsEvent });
 
 sample({
     clock: [attachTagsFx, deleteInvoiceFx],

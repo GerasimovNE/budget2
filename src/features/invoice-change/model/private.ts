@@ -7,7 +7,7 @@ export const $invoice = d.store<Invoice>({
     name: '',
     type: '',
     cost: '',
-    deadline: null,
+    deadline: '',
     status: '',
     tags: [],
 });
@@ -33,12 +33,6 @@ export const setRepeat = d.event<string>();
 
 export const $deadlineCheckbox = d.store(false);
 export const deadlineToggle = d.event();
-
-export const $repeatCheckbox = d.store(false);
-export const repeatToggle = d.event();
-
-export const $repeatCount = d.store(1);
-export const setRepeatCount = d.event<number>();
 
 export const $isOpenModalChange = d.store(false);
 

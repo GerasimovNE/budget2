@@ -27,8 +27,8 @@ const Label = styled.label`
     background-color: var(--color-background);
     box-shadow: 0px 0px 5px var(--color-border-line);
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,36 +1,41 @@
+import { Invoice, Tag } from '@/interface';
 import { createDomain } from 'effector';
 
-const domain = createDomain();
+const d = createDomain();
 
-export const createInvoiceEvent = domain.event();
+export const $tags = d.store<Tag[]>([]);
+export const setTags = d.event<Tag[]>();
+export const createInvoiceEvent = d.event();
 
-export const $name = domain.store('');
-export const setName = domain.event<string>();
+export const createInvoiceFx = d.effect<Invoice, void>();
 
-export const $cost = domain.store('');
-export const setCost = domain.event<string>();
+export const $name = d.store('');
+export const setName = d.event<string>();
 
-export const $type = domain.store<string>('income');
-export const setType = domain.event<string>();
+export const $cost = d.store('');
+export const setCost = d.event<string>();
 
-export const $description = domain.store('');
-export const setDescription = domain.event<string>();
+export const $type = d.store<string>('income');
+export const setType = d.event<string>();
 
-export const $deadlineCheckbox = domain.store(false);
-export const deadlineToggle = domain.event();
+export const $description = d.store('');
+export const setDescription = d.event<string>();
 
-export const $deadline = domain.store('');
-export const setDeadline = domain.event<string>();
+export const $deadlineCheckbox = d.store(false);
+export const deadlineToggle = d.event();
 
-export const $repeatCheckbox = domain.store(false);
-export const repeatToggle = domain.event();
+export const $deadline = d.store('');
+export const setDeadline = d.event<string>();
 
-export const $repeat = domain.store('daily');
-export const setRepeat = domain.event<string>('');
+export const $repeatCheckbox = d.store(false);
+export const repeatToggle = d.event();
 
-export const $status = domain.store('active');
-export const setStatus = domain.event<string>();
+export const $repeat = d.store('daily');
+export const setRepeat = d.event<string>('');
 
-export const $isOpenCreateModal = domain.store(false);
+export const $repeatCount = d.store('');
+export const setRepeatCount = d.event<string>();
 
-export const resetForm = domain.event();
+export const $isOpenCreateModal = d.store(false);
+
+export const resetForm = d.event();

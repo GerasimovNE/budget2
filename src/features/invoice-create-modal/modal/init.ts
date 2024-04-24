@@ -1,4 +1,4 @@
-import { createInvoice } from '@/dal/invoice';
+import { createInvoice, attachTags } from '@/dal/invoice';
 import {
     $cost,
     setCost,
@@ -16,14 +16,18 @@ import {
     setDescription,
     $repeat,
     setRepeat,
-    $status,
-    setStatus,
+    $repeatCount,
+    setRepeatCount,
     deadlineToggle,
     repeatToggle,
+    createInvoiceFx,
     resetForm,
+    $tags,
+    setTags,
 } from './private';
-import { createModalToggle, createInvoiceFx } from './public';
+import { createModalToggle, invoiceCreated } from './public';
 import { combine, sample } from 'effector';
+import { Invoice } from '@/interface';
 
 $name.on(setName, (_, n) => n).reset(resetForm);
 $type.on(setType, (_, t) => t).reset(resetForm);
@@ -33,15 +37,21 @@ $description.on(setDescription, (_, d) => d).reset(resetForm);
 
 $deadlineCheckbox.on(deadlineToggle, (_) => !_).reset(resetForm);
 
-$isOpenCreateModal.on(createModalToggle, (_) => !_).reset(resetForm);
+$isOpenCreateModal.on(createModalToggle, (_) => !_);
 $deadline.on(setDeadline, (_, d) => d).reset(resetForm);
 $repeatCheckbox.on(repeatToggle, (_) => !_).reset(resetForm);
 
 $repeat.on(setRepeat, (_, r) => r).reset(resetForm);
 
-$status.on(setStatus, (_, s) => s).reset(resetForm);
+$repeatCount.on(setRepeatCount, (_, c) => c).reset(resetForm);
+
+$tags.on(setTags, (_, t) => t).reset(resetForm);
 createInvoiceFx.use(async (invoice) => {
-    await createInvoice(invoice);
+    const { data } = await createInvoice(invoice);
+    await attachTags({
+        invoice_id: data,
+        tag_id: invoice.tags.map((t) => t.id),
+    });
 });
 
 sample({
@@ -51,32 +61,40 @@ sample({
         $name,
         $type,
         $description,
-        $status,
         $deadline,
-        $deadlineCheckbox,
-        $repeatCheckbox,
         $repeat,
+        $repeatCount,
+        $tags,
     ]),
-    filter: ([cost, name]) => parseFloat(cost) >= 0 && name.length > 0,
     fn: ([
         cost,
         name,
         type,
         description,
-        status,
         deadline,
-        deadlineCheckbox,
-        repeatCheckbox,
         repeat,
-    ]) => ({
-        name,
-        cost: type == 'task' ? '0' : cost,
-        description,
-        type,
-        status,
-        deadline: deadlineCheckbox ? deadline : null,
-        repeat_interval: repeatCheckbox ? repeat : null,
-        tags: [],
-    }),
-    target: [createInvoiceFx, createModalToggle, resetForm],
+        repeatCount,
+        tags,
+    ]) => {
+        let invoice: Invoice = {
+            name,
+            cost,
+            description,
+            type,
+            deadline: $deadlineCheckbox.getState() ? deadline : '',
+            tags,
+        };
+        if ($repeatCheckbox.getState()) {
+            invoice.repeat_interval = repeat;
+            invoice.repeat_count = repeatCount;
+        }
+        return invoice;
+    },
+    target: createInvoiceFx,
 });
+
+sample({
+    clock: createInvoiceFx.doneData,
+    target: [invoiceCreated, createModalToggle],
+});
+sample({ clock: createModalToggle, target: resetForm });

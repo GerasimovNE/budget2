@@ -9,10 +9,12 @@ export const Input = styled.input`
     font-size: 20px;
     padding: 5px;
     font-family: nunito;
+
     &::-webkit-outer-spin-button,
     ::-webkit-inner-spin-button {
         -webkit-appearance: none;
     }
+
     &:disabled {
         opacity: 0.5;
     }

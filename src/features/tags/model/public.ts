@@ -1,5 +1,5 @@
 import { createDomain } from 'effector';
 
-const domain = createDomain();
+const d = createDomain();
 
-export const deleteTagFx = domain.effect<number, void>();
+export const tagDeleted = d.event();

@@ -11,8 +11,9 @@ import {
     $isDeleteVisible,
     deleteVisibleToggle,
     resetDeleteVisible,
+    deleteTagFx,
 } from './private';
-import { deleteTagFx } from './public';
+import { tagDeleted } from './public';
 import { sample } from 'effector';
 import { getTags, createTag, deleteTag } from '@/dal/tags';
 
@@ -38,6 +39,11 @@ $tagName.on(setTagName, (_, n) => n).reset(resetTagName);
 $isOpenCreateModal.on(createModalToggle, (_) => !_);
 
 sample({
+    clock: createModalToggle,
+    target: resetTagName,
+});
+
+sample({
     clock: createTagEvent,
     source: $tagName,
     filter: (name) => name.length > 0,
@@ -46,10 +52,10 @@ sample({
 
 sample({
     clock: createTagFx,
-    target: [resetTagName, createModalToggle, resetDeleteVisible, getTagsFx],
+    target: [createModalToggle, resetDeleteVisible, getTagsFx],
 });
 
 sample({
     clock: deleteTagFx,
-    target: [getTagsFx],
+    target: [getTagsFx, tagDeleted],
 });

@@ -32,7 +32,7 @@ export const MainForm = () => {
                 ></Input>
                 <Radio
                     labels={radioLabels}
-                    name="types"
+                    name="typesCr"
                     value={type}
                     setter={setType}
                 />
@@ -57,8 +57,8 @@ const Cont = styled.div`
     @media (min-width: 768px) {
         flex-direction: row;
         justify-content: space-between;
-        div[id='types'] {
-            width: 252px;
+        div[id='typesCr'] {
+            width: 258px;
         }
         input[type='number'] {
             width: 252px;

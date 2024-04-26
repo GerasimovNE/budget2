@@ -30,3 +30,8 @@ export type Params = {
     orderBy?: string;
     orderDir?: string;
 };
+
+export type DateParams = {
+    startDate: string;
+    endDate: string;
+};

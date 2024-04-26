@@ -9,16 +9,26 @@ import {
 
 export const InvoiceItem: React.FC<Invoice> = (invoice) => {
     const ref = React.useRef(null);
+
     const handler = (ref: React.MutableRefObject<any>, e: EventTarget) => {
         if (!ref.current.contains(e)) {
             setInvoice(invoice);
             changeModalToggle();
         }
     };
+    const getStatus = () => {
+        const today = new Date();
+        if (invoice.deadline && invoice.status == 'active') {
+            if (new Date(invoice.deadline) < today) {
+                return 'deadline';
+            }
+        }
+        return invoice.status ? invoice.status : '';
+    };
     return (
         <Container
             id={invoice.id ? `${invoice.id}` : invoice.name}
-            status={invoice.status ? invoice.status : ''}
+            status={getStatus()}
             onClick={(e) => handler(ref, e.target)}
         >
             <TextCont>
@@ -68,6 +78,8 @@ const Container = styled.div<{ status: string }>`
                 ? 'var(--color-completed)'
                 : props.status === 'aborted'
                 ? 'var(--color-aborted)'
+                : props.status === 'deadline'
+                ? 'var(--color-deadline)'
                 : 'black'};
     user-select: none;
     &:hover {

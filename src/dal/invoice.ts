@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Invoice, AttachTags, Params } from '@/interface';
+import { Invoice, AttachTags, Params, DateParams } from '@/interface';
 export const getInvoice = (params: Params) => {
     return axios.get('api/invoices', { params: params });
 };
@@ -18,4 +18,10 @@ export const attachTags = (payload: AttachTags) => {
 
 export const putchInvoice = (invoice: Invoice) => {
     return axios.patch(`api/invoice/${invoice.id}`, invoice);
+};
+
+export const summaryInvoice = (dates: DateParams) => {
+    return axios.get('./api/summary', {
+        params: dates,
+    });
 };

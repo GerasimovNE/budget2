@@ -22,6 +22,7 @@ export const CreateTagModal = () => {
             <Input
                 id="createTag"
                 value={tagName}
+                autoComplete="off"
                 placeholder="name"
                 onChange={(e) => setTagName(e.target.value)}
             />
@@ -34,7 +35,6 @@ const Container = styled.div<{ isOpen: boolean }>`
     display: ${(props) => (props.isOpen ? 'flex' : 'none')};
     position: absolute;
     top: 80px;
-    left: -10px;
     z-index: 5;
     flex-direction: column;
     color: var(--color-text);
@@ -42,10 +42,14 @@ const Container = styled.div<{ isOpen: boolean }>`
     border-radius: 40px;
     background-color: var(--color-primary);
     box-shadow: 0px 0px 5px var(--color-text);
-    width: 80vw;
-    min-width: 450px;
-    max-width: 600px;
     padding: 20px;
     font-size: 16px;
     margin: 10px;
+    width: 270px;
+    @media (min-width: 350px) {
+        left: -10px;
+    }
+    @media (min-width: 768px) {
+        left: 130px;
+    }
 `;

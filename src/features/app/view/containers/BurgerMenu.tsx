@@ -1,8 +1,9 @@
 import React from 'react';
 import { useStore } from 'effector-react';
 import styled from 'styled-components';
-import { $isOpenBurger, burgerToggle } from '../../model/private';
+import { $isOpenBurger, burgerToggle, exportDbFx } from '../../model/private';
 import { filtModalToggle } from '@/features/filter-bar/model/public';
+import { summaryModalToggle } from '@/features/summary/model/public';
 import { createModalToggle } from '@/features/invoice-create-modal/modal';
 
 export const BurgerMenu = () => {
@@ -10,6 +11,18 @@ export const BurgerMenu = () => {
 
     return (
         <Container isOpen={isOpen}>
+            <div
+                id="summary"
+                onClick={() => {
+                    summaryModalToggle();
+                    burgerToggle();
+                }}
+            >
+                Summary
+            </div>
+            <Hr />
+            <div onClick={() => exportDbFx(null)}>Export</div>
+            <Hr />
             <div
                 id="filter"
                 onClick={() => {
@@ -43,7 +56,7 @@ const Container = styled.div<{ isOpen: boolean }>`
     border-radius: 8px;
     background-color: var(--color-background);
     border: 1px solid var(--color-border-line);
-    transform: translateX(-75px);
+    transform: translateX(-112px);
 `;
 const Hr = styled.hr`
     color: var(--color-borderline);

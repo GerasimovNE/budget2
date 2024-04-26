@@ -51,11 +51,11 @@ sample({
 });
 
 sample({
-    clock: createTagFx,
+    clock: createTagFx.doneData,
     target: [createModalToggle, resetDeleteVisible, getTagsFx],
 });
 
 sample({
-    clock: deleteTagFx,
+    clock: deleteTagFx.doneData,
     target: [getTagsFx, tagDeleted],
 });

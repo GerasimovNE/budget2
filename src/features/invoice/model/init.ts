@@ -17,7 +17,7 @@ import {
     $filterParams,
 } from '@/features/filter-bar/model/public';
 import { invoiceIsChanged } from '@/features/invoice-change/model/public';
-import { deleteTagFx } from '@/features/tags/model';
+import { tagDeleted } from '@/features/tags/model';
 
 import { combine, sample } from 'effector';
 import { Invoice, Params } from '@/interface';
@@ -56,7 +56,7 @@ sample({
 sample({
     clock: [
         invoiceCreated,
-        deleteTagFx.doneData,
+        tagDeleted,
         invoiceIsChanged,
         searchEvent,
         setPage,

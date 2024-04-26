@@ -4,3 +4,4 @@ import './features/tags/init';
 import './features/invoice-change/init';
 import './features/app/init';
 import './features/filter-bar/init';
+import './features/summary/init';

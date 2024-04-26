@@ -19,3 +19,4 @@ export const resetTagName = domain.event();
 export const $isDeleteVisible = domain.store(false);
 export const deleteVisibleToggle = domain.event();
 export const resetDeleteVisible = domain.event();
+export const deleteTagFx = domain.effect<number, void>();

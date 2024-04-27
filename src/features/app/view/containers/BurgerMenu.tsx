@@ -1,10 +1,11 @@
 import React from 'react';
 import { useStore } from 'effector-react';
 import styled from 'styled-components';
-import { $isOpenBurger, burgerToggle, exportDbFx } from '../../model/private';
+import { $isOpenBurger, burgerToggle } from '../../model/private';
 import { filtModalToggle } from '@/features/filter-bar/model/public';
 import { summaryModalToggle } from '@/features/summary/model/public';
 import { createModalToggle } from '@/features/invoice-create-modal/modal';
+import { dbModalToogle } from '@/features/data-base/model/public';
 
 export const BurgerMenu = () => {
     const isOpen = useStore($isOpenBurger);
@@ -21,7 +22,15 @@ export const BurgerMenu = () => {
                 Summary
             </div>
             <Hr />
-            <div onClick={() => exportDbFx(null)}>Export</div>
+            <div
+                id="db"
+                onClick={() => {
+                    dbModalToogle();
+                    burgerToggle();
+                }}
+            >
+                Database
+            </div>
             <Hr />
             <div
                 id="filter"

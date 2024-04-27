@@ -18,6 +18,7 @@ import {
 } from '@/features/filter-bar/model/public';
 import { invoiceIsChanged } from '@/features/invoice-change/model/public';
 import { tagDeleted } from '@/features/tags/model';
+import { dbImported } from '@/features/data-base/model/public';
 
 import { combine, sample } from 'effector';
 import { Invoice, Params } from '@/interface';
@@ -55,6 +56,7 @@ sample({
 
 sample({
     clock: [
+        dbImported,
         invoiceCreated,
         tagDeleted,
         invoiceIsChanged,

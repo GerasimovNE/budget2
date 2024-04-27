@@ -10,6 +10,9 @@ export const Input = styled.input`
     padding: 5px;
     font-family: nunito;
 
+    &::file-selector-button {
+        display: none;
+    }
     &::-webkit-outer-spin-button,
     ::-webkit-inner-spin-button {
         -webkit-appearance: none;

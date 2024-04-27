@@ -5,6 +5,7 @@ import { InvoiceCreateModal } from '@/features/invoice-create-modal/view';
 import { InvoiceChangeModal } from '@/features/invoice-change/view/entries';
 import { FilterBar } from '@/features/filter-bar/view/entries/FilterBar';
 import { SummaryModal } from '@/features/summary/view/entries/SummaryModal';
+import { DBModal } from '@/features/data-base/view/entries';
 import styled from 'styled-components';
 
 export const Main = () => {
@@ -13,6 +14,7 @@ export const Main = () => {
             <NavBar />
             <Body>
                 <SummaryModal />
+                <DBModal />
                 <FilterBar />
                 <InvoiceCreateModal />
                 <InvoiceChangeModal />

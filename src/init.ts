@@ -5,3 +5,4 @@ import './features/invoice-change/init';
 import './features/app/init';
 import './features/filter-bar/init';
 import './features/summary/init';
+import './features/data-base/init';

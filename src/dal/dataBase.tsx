@@ -7,4 +7,6 @@ export const exportDb = async () => {
     saveAs(bd, data.BCM_ImageName);
 };
 
-export const importDb = (db: JSON) => axios.post('/api/DBimport', db);
+export const importDb = (db: string) => {
+    return axios.post('/api/DBimport', db);
+};
